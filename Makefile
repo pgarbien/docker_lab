@@ -37,14 +37,14 @@ image:
 		--build-arg SCHEMA_BUILD_DATE="$(SCHEMA_BUILD_DATE)" \
 		--build-arg SCHEMA_BUILD_VERSION="$(SCHEMA_BUILD_VERSION)" \
 		--build-arg SCHEMA_CMD="$(SCHEMA_CMD)" \
-		-t pgarbien/docker_lab:latest \
+		-t $SCHEMA_NAME \
 		.
   # TODO: last part of this command that tags just built image with a specyfic tag
 	
 push: image
-	docker tag pgarbien/docker_lab:latest pgarbien/docker_lab:ca2de2a
-	docker push pgarbien/docker_lab:latest
-	docker push pgarbien/docker_lab:ca2de2a
+	docker tag pgarbien/docker_lab:latest $SCHEMA_NAME:$TAG
+	docker push $SCHEMA_NAME
+	docker push $SCHEMA_NAME:$TAG
 	
 clean:
 
