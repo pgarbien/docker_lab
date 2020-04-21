@@ -37,11 +37,13 @@ image:
 		--build-arg SCHEMA_BUILD_DATE="$(SCHEMA_BUILD_DATE)" \
 		--build-arg SCHEMA_BUILD_VERSION="$(SCHEMA_BUILD_VERSION)" \
 		--build-arg SCHEMA_CMD="$(SCHEMA_CMD)" \
-	
+		-t groundnuty/io-lab-docker-ci:latest \
+		.
   # TODO: last part of this command that tags just built image with a specyfic tag
 	
 push: image
-	# TODO: two commands, first pushes the latest image, second pushes the image tagged with specyfic tag
+	docker push pgarbien/docker_lab:ca2de2a
+	docker push pgarbien/docker_lab:latest
 	
 clean:
 
