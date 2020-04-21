@@ -37,13 +37,14 @@ image:
 		--build-arg SCHEMA_BUILD_DATE="$(SCHEMA_BUILD_DATE)" \
 		--build-arg SCHEMA_BUILD_VERSION="$(SCHEMA_BUILD_VERSION)" \
 		--build-arg SCHEMA_CMD="$(SCHEMA_CMD)" \
-		-t groundnuty/io-lab-docker-ci:latest \
+		-t pgarbien/docker_lab:latest \
 		.
   # TODO: last part of this command that tags just built image with a specyfic tag
 	
 push: image
-	docker push pgarbien/docker_lab:ca2de2a
+	docker tag pgarbien/docker_lab:latest pgarbien/docker_lab:ca2de2a
 	docker push pgarbien/docker_lab:latest
+	docker push pgarbien/docker_lab:ca2de2a
 	
 clean:
 
